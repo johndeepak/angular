@@ -4,88 +4,45 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="praticeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="praticejoins">
+    <Schema Namespace="praticeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Mypractice">
           <Key>
-            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="orderId" />
           </Key>
-          <Property Name="Id" Type="int" />
-          <Property Name="OrderDate" Type="varchar" MaxLength="20" />
-          <Property Name="OrderNumber" Type="int" />
-          <Property Name="CustomerId" Type="int" Nullable="false" />
-          <Property Name="TotalAmount" Type="int" />
-        </EntityType>
-        <EntityType Name="praticejoins1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="FirstName" Type="varchar" MaxLength="20" />
-          <Property Name="LastName" Type="varchar" MaxLength="20" />
-          <Property Name="City" Type="varchar" MaxLength="20" />
-          <Property Name="Country" Type="varchar" MaxLength="20" />
-          <Property Name="Phone" Type="int" />
+          <Property Name="Ordernumber" Type="varchar" MaxLength="50" />
+          <Property Name="Customername" Type="varchar" MaxLength="50" />
+          <Property Name="orderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityContainer Name="praticeModelStoreContainer">
-          <EntitySet Name="praticejoins" EntityType="Self.praticejoins" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="praticejoins1" EntityType="Self.praticejoins1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mypractice" EntityType="Self.Mypractice" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="praticeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="praticejoin">
-          <Key>
-            <PropertyRef Name="CustomerId" />
-          </Key>
-          <Property Name="Id" Type="Int32" />
-          <Property Name="OrderDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="OrderNumber" Type="Int32" />
-          <Property Name="CustomerId" Type="Int32" Nullable="false" />
-          <Property Name="TotalAmount" Type="Int32" />
-        </EntityType>
-        <EntityType Name="praticejoins1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="Int32" />
-        </EntityType>
         <EntityContainer Name="praticeEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="praticejoins" EntityType="Self.praticejoin" />
-          <EntitySet Name="praticejoins1" EntityType="Self.praticejoins1" />
+          <EntitySet Name="Mypractices" EntityType="praticeModel.Mypractice" />
         </EntityContainer>
+        <EntityType Name="Mypractice">
+          <Key>
+            <PropertyRef Name="orderId" />
+          </Key>
+          <Property Name="Ordernumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Customername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="praticeModelStoreContainer" CdmEntityContainer="praticeEntities">
-          <EntitySetMapping Name="praticejoins">
-            <EntityTypeMapping TypeName="praticeModel.praticejoin">
-              <MappingFragment StoreEntitySet="praticejoins">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="praticejoins1">
-            <EntityTypeMapping TypeName="praticeModel.praticejoins1">
-              <MappingFragment StoreEntitySet="praticejoins1">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <EntitySetMapping Name="Mypractices">
+            <EntityTypeMapping TypeName="praticeModel.Mypractice">
+              <MappingFragment StoreEntitySet="Mypractice">
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+                <ScalarProperty Name="Customername" ColumnName="Customername" />
+                <ScalarProperty Name="Ordernumber" ColumnName="Ordernumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

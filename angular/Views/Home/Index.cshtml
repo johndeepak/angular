@@ -21,34 +21,30 @@
         <table cellpadding="12" class="table table-bordered table-hover">
             <tr>
                 <td>
-                    <b>ID</b>
+                    <b>orderId</b>
                 </td>
                 <td>
-                    <b>Name</b>
+                    <b>Ordernumber</b>
                 </td>
                 <td>
-                    <b>City</b>
+                    <b>Customername</b>
                 </td>
-                <td>
-                    <b>Age</b>
-                </td>
+
                 <td>
                     <b>Actions</b>
                 </td>
             </tr>
             <tr ng-repeat="Emp in employees">
                 <td>
-                    {{Emp.Id}}
+                    {{Emp.orderId}}
                 </td>
                 <td>
-                    {{Emp.OrderNumber}}
+                    {{Emp.Ordernumber}}
                 </td>
                 <td>
-                    {{Emp.OrderDate}}
+                    {{Emp.Customername}}
                 </td>
-                <td>
-                    {{Emp.CustomerId}}
-                </td>
+               
                 <td>
                     <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateEmp(Emp)" />
                     <input type="button" class="btn btn-danger" value="Delete" ng-click="DeleteEmp(Emp)" />
@@ -65,28 +61,21 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Name:</label>
+                            <label class="col-md-4 control-label">Ordernumber:</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" id="inputEmail" placeholder="Name" ng-model="EmpName">
+                                <input type="text" class="form-control" id="inputEmail" placeholder="Ordernumber" ng-model="Ordernumber">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-4">
                         <div class="form-group">
-                            <label class="col-md-4 control-label">City:</label>
+                            <label class="col-md-4 control-label">Customername:</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" id="inputPassword" placeholder="City" ng-model="EmpCity">
+                                <input type="text" class="form-control" id="inputPassword" placeholder="Customername" ng-model="Customername">
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Age:</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="inputLabel3" placeholder="Age" ng-model="EmpAge">
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="row">
                     <div class="col-sm-6 col-lg-4">

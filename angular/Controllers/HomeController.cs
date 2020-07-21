@@ -15,75 +15,75 @@ namespace angular.Controllers
 
          public JsonResult Get_AllEmployee() {  
                 using(praticeEntities Obj = new praticeEntities()) {  
-                    List <praticejoin> Emp = Obj.praticejoins.ToList();  
+                    List <Mypractice> Emp = Obj.Mypractices.ToList();  
                     return Json(Emp, JsonRequestBehavior.AllowGet);  
                 }  
             }  
             /// <summary>  
-            /// Get praticejoin With Id  
+            /// Get Data With Id  
             /// </summary>  
             /// <param name="Id"></param>  
             /// <returns></returns>  
         public JsonResult Get_EmployeeById(string Id) {  
                 using(praticeEntities Obj = new praticeEntities()) {  
                     int EmpId = int.Parse(Id);  
-                    return Json(Obj.praticejoins.Find(EmpId), JsonRequestBehavior.AllowGet);  
+                    return Json(Obj.Mypractices.Find(EmpId), JsonRequestBehavior.AllowGet);  
                 }  
             }  
             /// <summary>  
-            /// Insert New praticejoin  
+            /// Insert New Data  
             /// </summary>  
             /// <param name="Employe"></param>  
             /// <returns></returns>  
-        public string Insert_Employee(praticejoin Employe) {  
+        public string Insert_Employee(Mypractice Employe) {  
                 if (Employe != null) {  
                     using(praticeEntities Obj = new praticeEntities()) {  
-                        Obj.praticejoins.Add(Employe);  
+                        Obj.Mypractices.Add(Employe);  
                         Obj.SaveChanges();  
-                        return "praticejoin Added Successfully";  
+                        return "Data Added Successfully";  
                     }  
                 } else {  
-                    return "praticejoin Not Inserted! Try Again";  
+                    return "Data Not Inserted! Try Again";  
                 }  
             }  
             /// <summary>  
-            /// Delete praticejoin Information  
+            /// Delete Data Information  
             /// </summary>  
             /// <param name="Emp"></param>  
             /// <returns></returns>  
-        public string Delete_Employee(praticejoin Emp) {  
+        public string Delete_Employee(Mypractice Emp) {  
                 if (Emp != null) {  
                     using(praticeEntities Obj = new praticeEntities()) {  
                         var Emp_ = Obj.Entry(Emp);  
                         if (Emp_.State == System.Data.Entity.EntityState.Detached) {  
-                            Obj.praticejoins.Attach(Emp);  
-                            Obj.praticejoins.Remove(Emp);  
+                            Obj.Mypractices.Attach(Emp);  
+                            Obj.Mypractices.Remove(Emp);  
                         }  
                         Obj.SaveChanges();  
-                        return "praticejoin Deleted Successfully";  
+                        return "Data Deleted Successfully";  
                     }  
                 } else {  
-                    return "praticejoin Not Deleted! Try Again";  
+                    return "Data Not Deleted! Try Again";  
                 }  
             }  
             /// <summary>  
-            /// Update praticejoin Information  
+            /// Update Data Information  
             /// </summary>  
             /// <param name="Emp"></param>  
             /// <returns></returns>  
-        public string Update_Employee(praticejoin Emp) {  
+        public string Update_Employee(Mypractice Emp) {  
             if (Emp != null) {  
                 using(praticeEntities Obj = new praticeEntities()) {  
-                    var Emp_ = Obj.Entry(Emp);  
-                    praticejoin EmpObj = Obj.praticejoins.Where(x => x.Id == Emp.Id).FirstOrDefault();  
-                    EmpObj.OrderNumber = Emp.OrderNumber;  
-                    EmpObj.OrderDate = Emp.OrderDate;  
-                    EmpObj.CustomerId = Emp.CustomerId;  
+                    var Emp_ = Obj.Entry(Emp);
+                    Mypractice EmpObj = Obj.Mypractices.Where(x => x.orderId == Emp.orderId).FirstOrDefault();  
+                    EmpObj.Ordernumber = Emp.Ordernumber;  
+                    EmpObj.Customername = Emp.Customername;  
+                  
                     Obj.SaveChanges();  
-                    return "praticejoin Updated Successfully";  
+                    return "Data Updated Successfully";  
                 }  
             } else {  
-                return "praticejoin Not Updated! Try Again";  
+                return "Data Not Updated! Try Again";  
             }  
         }  
     }  

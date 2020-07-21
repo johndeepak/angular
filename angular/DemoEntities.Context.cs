@@ -25,7 +25,6 @@ namespace angular
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<praticejoin> praticejoins { get; set; }
-        public virtual DbSet<praticejoins1> praticejoins1 { get; set; }
+        public virtual DbSet<Mypractice> Mypractices { get; set; }
     }
 }

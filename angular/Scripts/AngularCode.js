@@ -10,9 +10,9 @@ app.controller("HomeController", function ($scope, $http) {
         var Action = document.getElementById("btnSave").getAttribute("value");
         if (Action == "Submit") {
             $scope.Employe = {};
-            $scope.Employe.OrderDate = $scope.EmpName;
-            $scope.Employe.CustomerId = $scope.EmpCity;
-            $scope.Employe.Id = $scope.EmpAge;
+            $scope.Employe.Ordernumber = $scope.Ordernumber;
+            $scope.Employe.Customername = $scope.Customername;
+            //$scope.Employe.Id = $scope.EmpAge;
             $http({
                 method: "POST",
                 url: "/Home/Insert_Employee",
@@ -21,16 +21,15 @@ app.controller("HomeController", function ($scope, $http) {
             }).then(function (response) {
                 alert(response.data);
                 $scope.GetAllData();
-                $scope.EmpName = "";
-                $scope.EmpCity = "";
-                $scope.EmpAge = "";
+                $scope.Ordernumber = "";
+                $scope.Customername = "";
+               
             })
         } else {
             $scope.Employe = {};
-            $scope.Employe.OrderDate = $scope.EmpName;
-            $scope.Employe.CustomerId = $scope.EmpCity;
-            $scope.Employe.Id = $scope.EmpAge;
-            $scope.Employe.Emp_Id = document.getElementById("EmpID_").value;
+            $scope.Employe.Ordernumber = $scope.Ordernumber;
+            $scope.Employe.Customername = $scope.Customername;
+            $scope.Employe.orderId = document.getElementById("EmpID_").value;
             $http({
                 method: "post",
                 url: "http://localhost:1316/Home/Update_Employee",
@@ -39,9 +38,9 @@ app.controller("HomeController", function ($scope, $http) {
             }).then(function (response) {
                 alert(response.data);
                 $scope.GetAllData();
-                $scope.EmpName = "";
-                $scope.EmpCity = "";
-                $scope.EmpAge = "";
+                $scope.Ordernumber = "";
+                $scope.Customername = "";
+               
                 document.getElementById("btnSave").setAttribute("value", "Submit");
                 document.getElementById("btnSave").style.backgroundColor = "cornflowerblue";
                 document.getElementById("spn").innerHTML = "Add New Employee";
@@ -72,12 +71,16 @@ app.controller("HomeController", function ($scope, $http) {
     };
     $scope.UpdateEmp = function (Emp) {
         debugger
-        document.getElementById("EmpID_").value = Emp.Emp_Id;
-        $scope.EmpName = Emp.OrderDate;
-        $scope.EmpCity = Emp.CustomerId;
-        $scope.EmpAge = Emp.Id;
-        document.getElementById("btnSave").setAttribute("value", "Update");
-        document.getElementById("btnSave").style.backgroundColor = "Yellow";
-        document.getElementById("spn").innerHTML = "Update Employee Information";
-    }
+        document.getElementById("EmpID_").value = Emp.orderId;
+        $scope.Customername = Emp.Customername;
+
+        $scope.Ordernumber = Emp.Ordernumber;
+    
+
+            document.getElementById("btnSave").setAttribute("value", "Update");
+            document.getElementById("btnSave").style.backgroundColor = "Yellow";
+            document.getElementById("spn").innerHTML = "Update Employee Information";
+       
+    };
+           
 })

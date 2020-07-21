@@ -12,13 +12,10 @@ namespace angular
     using System;
     using System.Collections.Generic;
     
-    public partial class praticejoins1
+    public partial class Mypractice
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public Nullable<int> Phone { get; set; }
+        public string Ordernumber { get; set; }
+        public string Customername { get; set; }
+        public int orderId { get; set; }
     }
 }
